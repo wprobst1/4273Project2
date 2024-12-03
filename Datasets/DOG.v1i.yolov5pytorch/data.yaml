@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['Abrador', 'Chihuahua', 'Shiba-Inu']
+
+roboflow:
+  workspace: max-evo5q
+  project: dog-uxste
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/max-evo5q/dog-uxste/dataset/1
