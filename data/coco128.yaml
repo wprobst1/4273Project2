@@ -21,4 +21,5 @@ names:
   4: pikachu
 
 # Download script/URL (optional)
-download: https://github.com/wprobst1/4273Project2/blob/main/Dataset.zip
+download: https://raw.githubusercontent.com/wprobst1/4273Project2/main/Dataset.zip
+
