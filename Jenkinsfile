@@ -1,68 +1,44 @@
 pipeline {
     agent any
+
     environment {
-        PYTHON_ENV = 'venv' // Virtual environment for Python dependencies
+        PYTHON_ENV = 'python3'
+        TEST_FILE = 'tests.py'
     }
+
     stages {
         stage('Setup Environment') {
             steps {
-                script {
-                    echo "Setting up Python environment"
-                    // Create and activate a Python virtual environment
-                    sh 'python3 -m venv ${PYTHON_ENV}'
-                    sh '. ${PYTHON_ENV}/bin/activate && pip install --upgrade pip'
-                    sh '. ${PYTHON_ENV}/bin/activate && pip install -r requirements.txt'
-                }
+                echo 'Setting up the environment...'
+                // Create virtual environment and install dependencies
+                sh '''
+                ${PYTHON_ENV} -m venv venv
+                source venv/bin/activate
+                pip install -r requirements.txt
+                '''
             }
         }
-        stage('Train Model') {
+        stage('Run Unit Test') {
             steps {
-                script {
-                    echo "Training the YOLO model"
-                    // Train the YOLO model
-                    sh '. ${PYTHON_ENV}/bin/activate && python train_yolo.py'
-                }
-            }
-        }
-        stage('Validate Model') {
-            steps {
-                script {
-                    echo "Validating the YOLO model"
-                    // Validate the YOLO model
-                    sh '. ${PYTHON_ENV}/bin/activate && python validate_yolo.py'
-                }
-            }
-        }
-        stage('Test Model') {
-            steps {
-                script {
-                    echo "Testing the YOLO model"
-                    // Test the YOLO model
-                    sh '. ${PYTHON_ENV}/bin/activate && python test_yolo.py --test-data data/test'
-                }
-            }
-        }
-        stage('Archive Results') {
-            steps {
-                script {
-                    echo "Archiving results"
-                    // Archive output files like metrics, logs, and model weights
-                    archiveArtifacts artifacts: 'output/**/*', fingerprint: true
-                }
+                echo 'Running unit test for YOLO model...'
+                sh """
+                source venv/bin/activate
+                ${PYTHON_ENV} -m unittest ${TEST_FILE}
+                """
             }
         }
     }
+
     post {
         always {
-            echo "Cleaning up workspace"
-            // Cleanup to avoid conflicts between builds
-            cleanWs()
+            echo 'Cleaning up environment...'
+            sh 'rm -rf venv'
         }
         success {
-            echo "Pipeline completed successfully!"
+            echo 'Unit test passed successfully!'
         }
         failure {
-            echo "Pipeline failed. Check the logs for details."
+            echo 'Unit test failed. Please check the logs for details.'
         }
     }
 }
