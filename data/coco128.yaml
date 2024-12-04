@@ -14,11 +14,11 @@ test: # test images (optional)
 
 # Classes
 names:
-  0: person
-  1: cat
-  2: dog
-  3: pikachu
-  4: drone
+  0: cat
+  1: dog
+  2: drone
+  3: person
+  4: pikachu
 
 # Download script/URL (optional)
-download: https://github.com/ultralytics/assets/releases/download/v0.0.0/coco128.zip
+# download: https://github.com/ultralytics/assets/releases/download/v0.0.0/coco128.zip
