@@ -19,6 +19,7 @@ names:
   2: drone
   3: person
   4: pikachu
+  5: none
 
 # Download script/URL (optional)
 download: https://github.com/wprobst1/4273Project2/blob/main/Dataset.zip
