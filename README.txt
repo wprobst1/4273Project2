@@ -21,12 +21,13 @@ ultralytics>=8.2.34
 The following commands comprise the installation procedure of the model
 git clone https://github.com/wprobst1/4273Project2
 cd 4273Project2
-pip install -r requirements.txt
+pip install requirements.txt
+python predict.py --source /path/to/video
 
 ---------------------------Usage--------------------------------------------------
 To use the model for object detection, use the command:
-python detect.py --source 0 #for use with web camera
-python detect.py --source "path to .mp4 source" #for use with video input
+python predict.py --source 0 #for use with web camera
+python predict.py --source "path to .mp4 source" #for use with video input
 Add --conf_thres float to adjust the sensitivity of the model when drawing boxes
 Add --iou_thres float to adjust intersection sensitivity of objects in the frame
 Add --view_img to see the output in real time from a .mp4
