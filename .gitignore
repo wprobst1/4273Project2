@@ -1,12 +1,8 @@
 # Repo-specific GitIgnore ----------------------------------------------------------------------------------------------
-*.jpg
-*.jpeg
 *.bmp
 *.tif
 *.tiff
 *.heic
-*.JPG
-*.JPEG
 *.BMP
 *.TIF
 *.TIFF
