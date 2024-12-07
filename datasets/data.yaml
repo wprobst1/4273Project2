@@ -1,0 +1,11 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 5
+names: 
+  0: 'drone'
+  1: 'pikachu'
+  2: 'cat'
+  3: 'dog'
+  4: 'person'
