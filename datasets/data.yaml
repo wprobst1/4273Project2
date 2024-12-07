@@ -2,10 +2,12 @@ train: ../train/images
 val: ../valid/images
 test: ../test/images
 
-nc: 5
-names: 
-  0: 'drone'
-  1: 'pikachu'
-  2: 'cat'
-  3: 'dog'
-  4: 'person'
+nc: 6
+names: ['-', 'Drones4 - v2 2023-02-13 10-06am', 'Pikachu finder - v3 2023-12-05 11-09am', 'catdetection - v1 2024-05-04 11-49pm', 'dogs - v1 2023-12-07 8-41pm', 'person - v1 2023-12-04 3-10pm']
+
+roboflow:
+  workspace: project2-kliyp
+  project: things2-ulbkg
+  version: 1
+  license: Private
+  url: https://app.roboflow.com/project2-kliyp/things2-ulbkg/1
