@@ -1,0 +1,20 @@
+----------------------------------------------------Objective----------------------------------------------------------
+This file outlines our test plan for the YOLO model, and our methodology in testing each build of the model.
+
+---------------------------------------------------Methodology-------------------------------------------------------------
+We are using TravisCI to automatically test each iteration of the model and verify that each update hasn't broken it.
+The tests are run in the .travis.yml file, where it runs a validation test using the model. The test will pass when the 
+validate command has been executed successfully, and the results will be compared to a dataset to guage the accuracy of
+the model.
+
+--------------------------------------------------Scope--------------------------------------------------------------------
+The scope of the tests is as follows: verification that the model runs, validation testing on a set of images, and comparing
+the results to determine if the model is working as expected.
+
+---------------------------------------------------Results-------------------------------------------------------------
+We have had issues with getting the automatic tests to run. We initially started with Jenkins, but after multiple builds of the
+server it was unable to run correctly due to an error relating to cloning the repository incorrectly. This lead us to try another
+CI/CD tool, TravisCI, which was much easier to set up and run tests with. Simple tests that didn't use the ultralytics library were successful,
+but the actual integration tests were not. The errors we encountered when working on the integration testing were puzzling as it gave us module 
+errors when importing ultralytics, which did not happen when running the same tests on the CLI in our windows environments. All of the successful 
+testing has been done manually within our CLI to check the accuracy of the model, and the model now has an 80% or hiugher accuarcy on all classes.
